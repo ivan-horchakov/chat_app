@@ -12,14 +12,12 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  static const double textScaler = 1.0;
+
   void setupPushNotifications() async {
     final fcm = FirebaseMessaging.instance;
 
     await fcm.requestPermission();
-
-    // For targeting individual device
-    // final token = await fcm.getToken();
-    // debugPrint('Token: $token');
 
     fcm.subscribeToTopic('chat');
   }
@@ -35,7 +33,10 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter Chat'),
+        title: const Text(
+          'Flutter Chat',
+          textScaler: TextScaler.linear(textScaler),
+        ),
         centerTitle: true,
         actions: [
           IconButton(

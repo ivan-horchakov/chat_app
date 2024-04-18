@@ -42,6 +42,7 @@ class MessageBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    const double textScaler = 1.0;
 
     return Stack(
       children: [
@@ -84,6 +85,7 @@ class MessageBubble extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           color: Colors.black87,
                         ),
+                        textScaler: const TextScaler.linear(textScaler),
                       ),
                     ),
 
@@ -123,6 +125,7 @@ class MessageBubble extends StatelessWidget {
                         height: 1.3,
                         color: isMe ? Colors.black87 : theme.colorScheme.onSecondary,
                       ),
+                      textScaler: const TextScaler.linear(textScaler),
                       softWrap: true,
                     ),
                   ),

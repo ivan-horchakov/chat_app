@@ -9,6 +9,7 @@ class ChatMessages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authenticatedUser = FirebaseAuth.instance.currentUser!;
+    const double textScaler = 1.0;
 
     return StreamBuilder(
       stream: FirebaseFirestore.instance
@@ -26,12 +27,18 @@ class ChatMessages extends StatelessWidget {
         }
         if (!chatSnapshots.hasData || chatSnapshots.data!.docs.isEmpty) {
           return const Center(
-            child: Text('No messages found.'),
+            child: Text(
+              'No messages found.',
+              textScaler: TextScaler.linear(textScaler),
+            ),
           );
         }
         if (chatSnapshots.hasError) {
           return const Center(
-            child: Text('Something went wrong...'),
+            child: Text(
+              'Something went wrong...',
+              textScaler: TextScaler.linear(textScaler),
+            ),
           );
         }
 

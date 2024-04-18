@@ -5,9 +5,14 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const double textScaler = 1.0;
+
     return const Scaffold(
       body: Center(
-        child: Text('Loading...'),
+        child: Text(
+          'Loading...',
+          textScaler: TextScaler.linear(textScaler),
+        ),
       ),
     );
   }

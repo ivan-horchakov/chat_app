@@ -10,6 +10,7 @@ final _firebase = FirebaseAuth.instance;
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
+
   @override
   State<AuthScreen> createState() {
     return _AuthScreenState();
@@ -25,6 +26,8 @@ class _AuthScreenState extends State<AuthScreen> {
   File? _selectedImage;
   var _isAuthenticating = false;
   var _enteredUsername = '';
+
+  static const double textScaler = 1.0;
 
   void _submit() async {
     final isValid = _form.currentState!.validate();
@@ -65,6 +68,7 @@ class _AuthScreenState extends State<AuthScreen> {
           content: Text(
             error.message ?? 'Authentication failed!',
             style: const TextStyle(color: Colors.redAccent),
+            textScaler: const TextScaler.linear(textScaler),
           ),
         ),
       );
@@ -163,7 +167,10 @@ class _AuthScreenState extends State<AuthScreen> {
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Theme.of(context).colorScheme.primaryContainer,
                               ),
-                              child: Text(_isLogin ? 'Log In' : 'Sign Up'),
+                              child: Text(
+                                _isLogin ? 'Log In' : 'Sign Up',
+                                textScaler: const TextScaler.linear(textScaler),
+                              ),
                             ),
                           if (!_isAuthenticating)
                             TextButton(
@@ -172,7 +179,10 @@ class _AuthScreenState extends State<AuthScreen> {
                                   _isLogin = !_isLogin;
                                 });
                               },
-                              child: Text(_isLogin ? 'Create an account' : 'I already have an account.'),
+                              child: Text(
+                                _isLogin ? 'Create an account' : 'I already have an account.',
+                                textScaler: const TextScaler.linear(textScaler),
+                              ),
                             ),
                         ],
                       ),

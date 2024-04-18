@@ -37,6 +37,8 @@ class _UserImagePickerState extends State<UserImagePicker> {
 
   @override
   Widget build(BuildContext context) {
+    const double textScaler = 1.0;
+
     return Column(
       children: [
         CircleAvatar(
@@ -50,6 +52,7 @@ class _UserImagePickerState extends State<UserImagePicker> {
           label: Text(
             'Add Image',
             style: TextStyle(color: Theme.of(context).colorScheme.primary),
+            textScaler: const TextScaler.linear(textScaler),
           ),
         ),
       ],
